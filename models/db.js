@@ -12,6 +12,7 @@ const sequelizeClient = new Sequelize(db.database, db.user, db.password, {
     dialect: 'postgres',
 });
 
+
 sequelizeClient.sync({ force: true })
     .then(() => {
         console.log('conectado')

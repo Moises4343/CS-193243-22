@@ -86,6 +86,7 @@ router.get('/all_user_orm', async function(req, res){
     });
 })
 
+
 //CRUD sequelize
 
 router.get('/readme', async function(req, res) {

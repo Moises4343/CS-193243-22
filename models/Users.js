@@ -43,4 +43,5 @@ const User = getData.sequelizeClient.define('cat_users',{
     }
 );
 
+
 export const getUser = User;
