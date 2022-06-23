@@ -1,13 +1,14 @@
 import { getData } from './db.js';
+import Sequelize from 'sequelize';
 import { DataTypes } from 'sequelize';
 import bcrypt from 'bcrypt';
 
-const User = getData.sequelizeClient.define('cat_users',{
+const Profile = getData.sequelizeClient.define('cat_profiles', {
     id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4,
         allowNull: false,
-        primarykey: true
+        primaryKey: true
     },
     name: {
         type: DataTypes.STRING,
@@ -22,26 +23,25 @@ const User = getData.sequelizeClient.define('cat_users',{
         allowNull: false,
         unique: {
             arg: true,
-            msg: 'This username is already exists'
+            msg: 'this profile is alredy taken.'
         },
     },
     password: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-        phone_number: DataTypes.STRING,
-    },
-    
-    {
-        tableName: 'cat_users',
-        freezeTableName: true,
-        hooks: {
-            beforeCreate: (user, options) =>{
+    phone_number : DataTypes.STRING,
+},
+{
+    tableName: 'cat_profiles',
+    freezeTableName: true,
+    hooks: {
+        beforeCreate: (user, options) => {
+            {
                 user.password = user.password && user.password != "" ? bcrypt.hashSync(user.password, 10) : "";
             }
         }
     }
-);
+});
 
-
-export const getUser = User;
+export const getProfile = Profile;

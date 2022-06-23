@@ -9,5 +9,5 @@ app.use('/api_v1/user', user);
 
 //Servidor activo
 app.listen( api.port ,() => {
-    console.log('Servidor corriendo en el puerto en el puerto =>', api.port);
+    console.log(`Server on port => ${api.port}`);
 });
