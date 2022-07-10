@@ -1,7 +1,8 @@
 import { getData } from './db.js';
-import Sequelize from 'sequelize';
 import { DataTypes } from 'sequelize';
 import bcrypt from 'bcrypt';
+import { getFather } from './Fathers.js';
+
 
 const User = getData.sequelizeClient.define('cat_users', {
     id: {
@@ -44,7 +45,8 @@ const User = getData.sequelizeClient.define('cat_users', {
     }
 });
 
-User.hasMany(Father);
-Father.belongsTo(User);
+User.hasMany(getFather, {foreignKey: 'catUserId'});
+getFather.belongsTo(User);
+
 
 export const getUser = User;

@@ -1,4 +1,3 @@
-
 import Sequelize from 'sequelize';
 import path from 'path';
 import dotenv from 'dotenv';
@@ -45,12 +44,12 @@ const sequelizeClient = (() => {
             });
     }
 })();
-sequelizeClient.sync({alter: true})
-.then(() => {
-    console.log('Conectado')
-})
-.catch(() => {
-    console.log('No se conecto')
-});
+sequelizeClient.sync({ alter: true })
+    .then(() => {
+        console.log('Conectado')
+    })
+    .catch(() => {
+        console.log('No se conecto')
+    });
 
-export const getData = {sequelizeClient}  ;
+export const getData = { sequelizeClient };
